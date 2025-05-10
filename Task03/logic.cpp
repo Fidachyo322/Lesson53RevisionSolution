@@ -6,8 +6,36 @@
 // количество строк, в которых положительных элементов больше 
 // чем всех остальных (отрицательных и нулевых).
 
+bool isPositiveMoreThanOther(int* raw, int m) {
+	int count = 0;
+
+	for (int j = 0; j < m; j++)
+	{
+		if (raw[j] > 0)
+		{
+			count++;
+		}
+	}
+
+	return count > m - count;
+}
+
 #include "logic.h"
 
 int count_rows_with_more_positive_values(int** matrix, int n, int m) {
-	return 0;
+	if (matrix == nullptr || m <= 0 || n <= 0)
+	{
+		return 0;
+	}
+	int count = 0;
+
+	for (int i = 0; i < n; i++)
+	{
+		if (isPositiveMoreThanOther(matrix[i], m))
+		{
+			count++;
+		}
+	}
+
+	return count;
 }
